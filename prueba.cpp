@@ -18,6 +18,7 @@ class lista{
 		void insertar(int valor,int pos);
 		void eliminar(int pos);
 		void imprimir_lista();
+		void imprimir_dato(int pos);
 };
 bool lista :: lista_vacia(){
 	if (tam==0){
@@ -98,6 +99,17 @@ void lista :: eliminar(int pos){
 		tam = tam-1;	
 	}
 }
+void lista :: imprimir_dato(int pos){
+	nodo *aux = sig;
+	if (pos>tam){
+		cout<<"No existe esa posicion dentro del arreglo "<<endl;
+	}else{
+		for (int i=0;i<pos-1;i++){
+			aux= aux->apuntador;
+		}
+		cout<<aux->valor<<endl;
+	}
+}
 
 int main(){
 	lista a;
@@ -112,7 +124,8 @@ int main(){
 		cout<<"4.Ingresar un nuevo elemento al final de la lista"<<endl;
 		cout<<"5.Mostrar la lista"<<endl;
 		cout<<"6.Eliminar elemento"<<endl;
-		cout<<"7.Salir del menu"<<endl;
+		cout<<"7.Mostrar un elemento de la lista"<<endl;
+		cout<<"8.Salir del menu"<<endl;
 		cin>>n;
 		if(n==1){
 			cout<<"EL tamano de la lista es: "<<a.tamano_lista()<<endl;
@@ -139,11 +152,14 @@ int main(){
 			cin>>pos;
 			a.eliminar(pos);
 		}else if(n==7){
+			cout<<"Ingresar la posicion que desea ver "<<endl;
+			cin>>pos;
+			a.imprimir_dato(pos);
+		}else if(n==8){
 			aux=aux+1;
 		} else{
 			cout<<"Opcion incorrecta"<<endl;
 		}
-		
 	}while(aux==0);
 	return 0;
 }

@@ -1,5 +1,4 @@
-#include<iostream>
-#include<lista>
+#include <iostream>
 using namespace std;
 int main(){
 	lista a;
@@ -11,9 +10,9 @@ int main(){
 		cout<<"1.Saber el tamano de la lista"<<endl;
 		cout<<"2.Saber si la lista esta vacia"<<endl;
 		cout<<"3.Ingresar un nuevo elemento"<<endl;
-		cout<<"4.Mostrar la lista"<<endl;
-		cout<<"5.Eliminar elemento"<<endl;
-		cout<<"6.Mostrar un elemento de la lista"<<endl;
+		cout<<"4.Ingresar un nuevo elemento al final de la lista"<<endl;
+		cout<<"5.Mostrar la lista"<<endl;
+		cout<<"6.Eliminar elemento"<<endl;
 		cout<<"7.Salir del menu"<<endl;
 		cin>>n;
 		if(n==1){
@@ -30,19 +29,19 @@ int main(){
 			cin>>pos;
 			a.insertar(valor,pos);	
 		}else if(n==4){
+			cout<<"Ingrese el nuevo valor "<<endl;
+			cin>>valor;
+			a.insertar_final(valor);
+		}else if(n==5){
 			cout<<"La lista es "<<endl;
 			a.imprimir_lista();
-		} else if(n==5){
+		} else if(n==6){
 			cout<<"Ingresar la posicion que desea eliminar "<<endl;
 			cin>>pos;
 			a.eliminar(pos);
-		}else if(n==6){
-			cout<<"Ingresar la posicion del dato desea ver "<<endl;
-			cin>>pos;
-			a.imprimir_dato(pos);
 		}else if(n==7){
 			aux=aux+1;
-		}else{
+		} else{
 			cout<<"Opcion incorrecta"<<endl;
 		}
 		

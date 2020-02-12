@@ -1,5 +1,5 @@
 #include<iostream>
-#include<lista.h>
+#include<lista>
 using namespace std;
 int main(){
 	lista a;
@@ -13,7 +13,8 @@ int main(){
 		cout<<"3.Ingresar un nuevo elemento"<<endl;
 		cout<<"4.Mostrar la lista"<<endl;
 		cout<<"5.Eliminar elemento"<<endl;
-		cout<<"6.Salir del menu"<<endl;
+		cout<<"6.Mostrar un elemento de la lista"<<endl;
+		cout<<"7.Salir del menu"<<endl;
 		cin>>n;
 		if(n==1){
 			cout<<"EL tamano de la lista es: "<<a.tamano_lista()<<endl;
@@ -36,8 +37,12 @@ int main(){
 			cin>>pos;
 			a.eliminar(pos);
 		}else if(n==6){
+			cout<<"Ingresar la posicion del dato desea ver "<<endl;
+			cin>>pos;
+			a.imprimir_dato(pos);
+		}else if(n==7){
 			aux=aux+1;
-		} else{
+		}else{
 			cout<<"Opcion incorrecta"<<endl;
 		}
 		

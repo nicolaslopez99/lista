@@ -1,5 +1,6 @@
-# ifndef LISTA_H
-# define Lista_H
+//# ifndef LISTA_H
+# define LISTA_H
+# include<iostream>
 using namespace std;
 template<class T>
 struct nodo{
@@ -15,12 +16,13 @@ class lista{
 			tam=0;
 			sig=NULL;
 		}
-		void insertar_final(nodo*apuntador);
+		void insertar_final(nodo<T>*apuntador);
 		bool lista_vacia();
 		int tamano_lista();
-		void insertar(int valor,int pos);
+		void insertar(T valor,int pos);
 		void eliminar(int pos);
 		void imprimir_lista();
+		void imprimir_dato(int pos);
 };
 template <class T>
 bool lista <T> :: lista_vacia(){
@@ -52,7 +54,8 @@ void lista <T> :: insertar(T info,int pos){
 		tam = tam+1;	
 	}	
 }
-void lista <T> :: insertar_final(T nodo *nuevo){
+template <class T>
+void lista <T> :: insertar_final(nodo <T> *nuevo){
 	nodo <T> *aux=sig;
 	if (tam==0){
 		sig= nuevo;
@@ -65,6 +68,7 @@ void lista <T> :: insertar_final(T nodo *nuevo){
 		tam = tam+1;
 	}
 }
+template <class T>
 void lista <T> :: imprimir_lista(){
 	nodo <T> *aux = sig;
 	for (int i=0;i<tam;i++){
@@ -72,6 +76,19 @@ void lista <T> :: imprimir_lista(){
 		aux= aux->apuntador;
 	}
 }
+template <class T>
+void lista <T> :: imprimir_dato(int pos){
+	nodo<T> *aux = sig;
+	if (pos>tam){
+		cout<<"No existe esa posicion dentro del arreglo "<<endl;
+	}else{
+		for (int i=0;i<pos-1;i++){
+			aux= aux->apuntador;
+		}
+		cout<<aux->valor<<endl;
+	}
+}
+template <class T>
 void lista <T> :: eliminar(int pos){
 	nodo <T> *aux;
 	nodo <T> *eliminar;

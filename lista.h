@@ -2,38 +2,44 @@
 # define Lista_H
 # include<iostream>
 using namespace std;
+template<class T>
 struct nodo{
-	nodo*apuntador;
-	int valor;
+	nodo <T>*apuntador;
+	T valor;
 };
+template<class T>
 class lista{
-	nodo*sig;
+	nodo <T>*sig;
 	int tam;
 	public :
 		lista(){
 			tam=0;
 			sig=NULL;
 		}
-		void insertar_final(int info);
+		void insertar_final(T info);
 		bool lista_vacia();
 		int tamano_lista();
-		void insertar(int valor,int pos);
+		void insertar(T valor,int pos);
 		void eliminar(int pos);
 		void imprimir_lista();
+		void imprimir_dato(int pos);
 };
-bool lista :: lista_vacia(){
+template<class T>
+bool lista <T>:: lista_vacia(){
 	if (tam==0){
 		return true;
 	}else{
 		return false;
 	}	
 }
-int lista :: tamano_lista(){
+template<class T>
+int lista <T> :: tamano_lista(){
 	return tam;	
 }
-void lista :: insertar(int info,int pos){
-	nodo *nuevo= new nodo;
-	nodo *aux;
+template<class T>
+void lista <T> :: insertar(T info,int pos){
+	nodo <T>*nuevo= new nodo <T>;
+	nodo <T>*aux;
 	nuevo->valor = info;
 	nuevo->apuntador = NULL;
 	if (pos>tam || pos<=0){
@@ -52,11 +58,12 @@ void lista :: insertar(int info,int pos){
 		tam = tam+1;	
 	}	
 }
-void lista :: insertar_final(int info){
-	nodo *nuevo=new nodo;
+template<class T>
+void lista <T> :: insertar_final(T info){
+	nodo <T>*nuevo=new nodo <T>;
 	nuevo->valor = info;
 	nuevo->apuntador = NULL;
-	nodo *aux=sig;
+	nodo <T> *aux=sig;
 	if (tam==0){
 		sig= nuevo;
 		tam = tam+1;
@@ -68,16 +75,18 @@ void lista :: insertar_final(int info){
 		tam = tam+1;
 	}
 }
-void lista :: imprimir_lista(){
-	nodo *aux = sig;
+template<class T>
+void lista <T>:: imprimir_lista(){
+	nodo <T>*aux = sig;
 	for (int i=0;i<tam;i++){
 		cout<<aux->valor<<endl;
 		aux= aux->apuntador;
 	}
 }
-void lista :: eliminar(int pos){
-	nodo *aux;
-	nodo *eliminar;
+template<class T>
+void lista <T>:: eliminar(int pos){
+	nodo <T>*aux;
+	nodo <T>*eliminar;
 	if (pos>tam || pos<=0){
 		cout<<"No existe esta posicion"<<endl;
 	} else if(pos==1){
@@ -98,5 +107,17 @@ void lista :: eliminar(int pos){
 		aux->apuntador = eliminar->apuntador;
 		eliminar->apuntador = NULL;
 		tam = tam-1;	
+	}
+}
+template<class T>
+void lista <T> :: imprimir_dato(int pos){
+	nodo <T>*aux = sig;
+	if (pos>tam){
+		cout<<"No existe esa posicion dentro del arreglo "<<endl;
+	}else{
+		for (int i=0;i<pos-1;i++){
+			aux= aux->apuntador;
+		}
+		cout<<aux->valor<<endl;
 	}
 }
